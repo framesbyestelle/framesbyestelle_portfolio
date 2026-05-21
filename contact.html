@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — framesbyestelle</title>
+  <meta name="description" content="Get in touch with Estelle Huy for event photography, portraits, or creative collaborations in Montreal.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="navbar" aria-label="Main navigation">
+    <a href="index.html" class="nav-logo">framesbyestelle</a>
+    <button class="nav-toggle" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-overlay" aria-hidden="true">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section pt-nav" aria-labelledby="contact-heading">
+      <div class="container">
+
+        <header style="margin-bottom: 3.5rem;">
+          <p class="section-label">Get in touch</p>
+          <h1 class="section-title" id="contact-heading">Let's work together.</h1>
+          <div class="divider" aria-hidden="true"></div>
+        </header>
+
+        <div class="contact-layout">
+
+          <!-- Form -->
+          <div>
+            <form
+              class="contact-form"
+              name="contact"
+              method="POST"
+              netlify
+              data-netlify="true"
+              action="thankyou.html"
+              aria-label="Contact form">
+
+              <input type="hidden" name="form-name" value="contact">
+
+              <div class="form-group">
+                <label class="form-label" for="name">Name</label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                  autocomplete="name">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="email">Email</label>
+                <input
+                  class="form-input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="your@email.com"
+                  required
+                  autocomplete="email">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="subject">Subject</label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="subject"
+                  name="subject"
+                  placeholder="e.g. Event Photography Inquiry">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="message">Message</label>
+                <textarea
+                  class="form-textarea"
+                  id="message"
+                  name="message"
+                  rows="5"
+                  placeholder="Tell me about your event or project..."
+                  required></textarea>
+              </div>
+
+              <button class="btn form-submit" type="submit"><span>Send message &nbsp;&#8594;</span></button>
+            </form>
+          </div>
+
+          <!-- Aside -->
+          <aside aria-label="Contact information">
+            <h2 class="contact-aside-title">
+              Whether you're planning an event, need portraits, or have a creative project in mind, I'd love to hear from you.
+            </h2>
+            <p class="contact-aside-text">
+              Based in Montreal and available for on-site work across Quebec and beyond. Response time is typically within 48 hours.
+            </p>
+
+            <div class="contact-tiles" role="list">
+              <a class="contact-tile" href="mailto:framesbyestelle@gmail.com" role="listitem" aria-label="Send email">
+                <span class="contact-tile-icon" aria-hidden="true">&#9993;</span>
+                <div>
+                  <div class="contact-tile-label">Email</div>
+                  <div class="contact-tile-value">framesbyestelle@gmail.com</div>
+                </div>
+              </a>
+              <a class="contact-tile" href="https://www.instagram.com/framesbyestelle/" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="Instagram profile">
+                <span class="contact-tile-icon" aria-hidden="true">&#128247;</span>
+                <div>
+                  <div class="contact-tile-label">Instagram</div>
+                  <div class="contact-tile-value">@framesbyestelle</div>
+                </div>
+              </a>
+              <a class="contact-tile" href="https://www.linkedin.com/in/estelle-huy/" target="_blank" rel="noopener noreferrer" role="listitem" aria-label="LinkedIn profile">
+                <span class="contact-tile-icon" aria-hidden="true">&#128188;</span>
+                <div>
+                  <div class="contact-tile-label">LinkedIn</div>
+                  <div class="contact-tile-value">Estelle Huy</div>
+                </div>
+              </a>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer-tagline">documenting moments worth remembering</p>
+    <nav class="footer-links" aria-label="Social links">
+      <a href="https://www.youtube.com/@framesbyestelle" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://www.instagram.com/framesbyestelle/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.linkedin.com/in/estelle-huy/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:framesbyestelle@gmail.com">Email</a>
+      <a href="https://plumbersphotographyunion.framer.website/" target="_blank" rel="noopener noreferrer">PPU</a>
+    </nav>
+    <p class="footer-copy">&copy; 2025 framesbyestelle</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
