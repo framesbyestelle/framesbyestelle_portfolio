@@ -163,7 +163,10 @@
         <img
           src="${base}${file}"
           alt="Photo ${i + 1} — ${friendlyName}"
-          loading="lazy">
+          loading="lazy"
+          decoding="async"
+          width="900"
+          height="600">
         <div class="gallery-item-overlay" aria-hidden="true">
           <div class="gallery-expand">+</div>
         </div>
@@ -173,6 +176,23 @@
       const open = () => lbOpen(+item.dataset.index);
       item.addEventListener('click', open);
       item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') open(); });
+
+      const img = item.querySelector('img');
+      if (img.complete && img.naturalWidth) {
+        item.classList.add('img-loaded');
+      } else {
+        img.addEventListener('load',  () => item.classList.add('img-loaded'), { once: true });
+        img.addEventListener('error', () => item.classList.add('img-loaded'), { once: true });
+      }
+    });
+  }
+
+  /* ── CONTACT FORM (local file:// fallback) ──────────── */
+  const contactForm = document.querySelector('.contact-form');
+  if (contactForm && window.location.protocol === 'file:') {
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      window.location.href = 'thankyou.html';
     });
   }
 
