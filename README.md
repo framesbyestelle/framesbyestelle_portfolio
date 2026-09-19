@@ -23,7 +23,8 @@ framesbyestelle-portfolio/
 │   └── style.css           ← All styles (shared across every page)
 │
 ├── js/
-│   └── main.js             ← Navbar, lightbox, gallery builder, filters
+│   ├── main.js             ← Navbar, lightbox, gallery builder, filters
+│   └── youtube.js          ← YouTube video list + player (home + film pages)
 │
 ├── events/
 │   ├── redbird-kiki-gala.html
@@ -85,7 +86,17 @@ const EVENT_IMAGES = [
 
 ## Hero image
 
-Place a landscape photo at `images/hero.jpg`. Aim for at least 1920×1080px. The image is filtered to ~38% brightness, so it works best with high-contrast or colourful shots.
+Place a landscape photo at `images/hero.jpg`. Aim for at least 1920×1080px. Export it cropped tight to the photo itself — no white border or matte around it (an Instagram-style framed export will show up as grey bars down the sides of the hero). The hero is lightly darkened in `css/style.css` (`.hero-bg` brightness) so the title stays readable.
+
+## Adding a YouTube video
+
+The Latest Videos section on the home page and the YouTube section on the Film page both read from one list at the top of `js/youtube.js`. To add a video, paste a new line at the **top** of the `VIDEOS` list (newest first):
+
+```javascript
+{ id: 'VIDEO_ID', title: 'video title', date: '2026-10-01' },
+```
+
+`VIDEO_ID` is the part after `v=` in the video's URL. Nothing else needs to change. The home page shows the newest 4; the Film page shows the newest 12.
 
 ## Deploying to Netlify
 
