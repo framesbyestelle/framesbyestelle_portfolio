@@ -76,22 +76,31 @@ main { animation: fadeUp 0.6s var(--ease) both; }
   align-items: center;
   justify-content: space-between;
   padding: 0 var(--gutter);
-  transition: background 0.4s var(--ease), border-color 0.4s var(--ease);
-  border-bottom: 1px solid transparent;
+  transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  border-bottom: 1px solid rgba(255,255,255,0.16);
 }
-.navbar:not(.scrolled) {
+/* The bar's background and blur live on a layer behind it. A blur/filter directly
+   on .navbar would make it the containing block for the fixed mobile menu overlay,
+   squashing the overlay into the 72px bar. */
+.navbar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: rgba(12, 11, 10, 0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom-color: rgba(255,255,255,0.16);
+  transition: background 0.4s var(--ease);
+  pointer-events: none;
 }
 .navbar:not(.scrolled) .nav-links a { color: var(--text); text-shadow: 0 1px 10px rgba(0,0,0,0.6); }
 .navbar.scrolled {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+}
+.navbar.scrolled::before {
   background: rgba(23, 22, 20, 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-color: rgba(255,255,255,0.16);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
 }
 
 .nav-logo {
