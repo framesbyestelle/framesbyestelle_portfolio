@@ -213,7 +213,7 @@ main { animation: fadeUp 0.6s var(--ease) both; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 70% 55% at 50% 50%, rgba(12,11,10,0.5) 0%, rgba(12,11,10,0) 100%),
+    radial-gradient(ellipse 70% 55% at 50% 48%, rgba(12,11,10,0.6) 0%, rgba(12,11,10,0) 100%),
     linear-gradient(to bottom, rgba(12,11,10,0) 60%, var(--bg) 100%);
 }
 .hero-content {
@@ -228,7 +228,7 @@ main { animation: fadeUp 0.6s var(--ease) both; }
   justify-content: center;
   gap: 1rem;
   margin-bottom: 1.5rem;
-  text-shadow: 0 1px 12px rgba(0,0,0,0.7);
+  text-shadow: 0 0 6px rgba(0,0,0,0.85), 0 1px 16px rgba(0,0,0,0.8);
 }
 .hero-eyebrow-line {
   display: block;
@@ -238,7 +238,7 @@ main { animation: fadeUp 0.6s var(--ease) both; }
 }
 .hero-eyebrow-text {
   font-size: 0.8rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text);
@@ -1259,6 +1259,9 @@ main { animation: fadeUp 0.6s var(--ease) both; }
    ========================================================== */
 @media (max-width: 1024px) {
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .hero-title { font-size: clamp(2.6rem, 13vw, 3.2rem); }
 }
 @media (max-aspect-ratio: 1/1) {
   .hero { height: 78vh; min-height: 520px; }
