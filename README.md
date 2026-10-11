@@ -86,6 +86,15 @@ const EVENT_IMAGES = [
 
 The Previous / Next event links at the bottom of every event page read their order from the cards in `portfolio.html`, so step 4 also places the new event in that sequence. Reorder the cards there to reorder the links.
 
+## Showing YouTube again
+
+YouTube is currently kept to a one-line link at the bottom of the Video page, and the "Latest Videos" block is hidden on the home page. Both are controlled by one attribute on `<main>`:
+
+- `film.html`: `data-youtube="end"` (link at the bottom) or `data-youtube="front"` (full player and grid, shown first)
+- `index.html`: `data-youtube="off"` (hidden) or `data-youtube="on"` (Latest Videos shown)
+
+The video list itself lives in `js/youtube.js`.
+
 ## Hero image
 
 Place a landscape photo at `images/hero.jpg`. Aim for at least 1920×1080px. Export it cropped tight to the photo itself — no white border or matte around it (an Instagram-style framed export will show up as grey bars down the sides of the hero). The hero is lightly darkened in `css/style.css` (`.hero-bg` brightness) so the title stays readable.
