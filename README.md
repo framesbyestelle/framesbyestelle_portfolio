@@ -84,6 +84,8 @@ const EVENT_IMAGES = [
 3. Create `images/[new-slug]/` and add photos
 4. Add a card to `portfolio.html` following the existing pattern
 
+The Previous / Next event links at the bottom of every event page read their order from the cards in `portfolio.html`, so step 4 also places the new event in that sequence. Reorder the cards there to reorder the links.
+
 ## Hero image
 
 Place a landscape photo at `images/hero.jpg`. Aim for at least 1920×1080px. Export it cropped tight to the photo itself — no white border or matte around it (an Instagram-style framed export will show up as grey bars down the sides of the hero). The hero is lightly darkened in `css/style.css` (`.hero-bg` brightness) so the title stays readable.

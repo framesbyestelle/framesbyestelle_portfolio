@@ -136,6 +136,104 @@
     if (Math.abs(dx) > 48) lbShow(dx < 0 ? lbIndex + 1 : lbIndex - 1);
   }, { passive: true });
 
+  /* ── EVENT PAGE: PREVIOUS / NEXT EVENT ──────────────── */
+  // Reads the card order from portfolio.html, so a new event card there is
+  // picked up automatically. Wraps around at both ends.
+  if (typeof EVENT_SLUG !== 'undefined' && document.getElementById('gallery')) {
+    const portfolioUrl = new URL('../portfolio.html', window.location.href);
+
+    const el = (tag, cls, text) => {
+      const n = document.createElement(tag);
+      if (cls) n.className = cls;
+      if (text) n.textContent = text;
+      return n;
+    };
+
+    const placeNav = nav => {
+      const section = document.querySelector('.gallery-section');
+      (section ? section.parentNode : document.querySelector('main')).insertBefore(
+        nav, section ? section.nextSibling : null
+      );
+    };
+
+    const eventLink = (ev, dir) => {
+      const a = el('a', `event-nav-link event-nav-${dir}`);
+      a.href = ev.href;
+      a.setAttribute('aria-label', `${dir === 'next' ? 'Next' : 'Previous'} event: ${ev.name}, ${ev.year}`);
+
+      const thumb = el('span', 'event-nav-thumb');
+      if (ev.cover) {
+        const img = el('img');
+        img.src = ev.cover;
+        img.alt = '';
+        img.loading = 'lazy';
+        img.addEventListener('error', () => thumb.classList.add('no-cover'), { once: true });
+        thumb.appendChild(img);
+      } else {
+        thumb.classList.add('no-cover');
+      }
+
+      const text = el('span', 'event-nav-text');
+      const label = el('span', 'event-nav-label');
+      const arrow = el('span', 'event-nav-arrow', dir === 'next' ? '→' : '←');
+      arrow.setAttribute('aria-hidden', 'true');
+      if (dir === 'next') { label.append('Next event ', arrow); }
+      else                { label.append(arrow, ' Previous event'); }
+      text.append(label, el('span', 'event-nav-name', ev.name), el('span', 'event-nav-year', ev.year));
+
+      a.append(thumb, text);
+      return a;
+    };
+
+    const backOnly = () => {
+      const nav = el('nav', 'event-nav');
+      nav.setAttribute('aria-label', 'More events');
+      const wrap = el('div', 'container');
+      const all = el('a', 'event-nav-all', 'Back to all events');
+      all.href = portfolioUrl.href;
+      wrap.appendChild(all);
+      nav.appendChild(wrap);
+      placeNav(nav);
+    };
+
+    fetch(portfolioUrl.href)
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(html => {
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const events = Array.from(doc.querySelectorAll('.event-card')).map(card => {
+          const href = card.getAttribute('href');
+          const img = card.querySelector('.card-img-wrap img');
+          return {
+            slug: href.split('/').pop().replace(/\.html$/, ''),
+            href: new URL(href, portfolioUrl).href,
+            name: (card.querySelector('.card-name') || {}).textContent || '',
+            year: (card.querySelector('.card-year') || {}).textContent || '',
+            cover: img ? new URL(img.getAttribute('src'), portfolioUrl).href : ''
+          };
+        });
+
+        const here = window.location.pathname.split('/').pop().replace(/\.html$/, '') || EVENT_SLUG;
+        let i = events.findIndex(e => e.slug === here);
+        if (i < 0) i = events.findIndex(e => e.slug === EVENT_SLUG);
+        if (i < 0 || events.length < 2) return backOnly();
+
+        const prev = events[(i - 1 + events.length) % events.length];
+        const next = events[(i + 1) % events.length];
+
+        const nav = el('nav', 'event-nav');
+        nav.setAttribute('aria-label', 'More events');
+        const wrap = el('div', 'container');
+        const grid = el('div', 'event-nav-grid');
+        grid.append(eventLink(prev, 'prev'), eventLink(next, 'next'));
+        const all = el('a', 'event-nav-all', 'View all events');
+        all.href = portfolioUrl.href;
+        wrap.append(grid, all);
+        nav.appendChild(wrap);
+        placeNav(nav);
+      })
+      .catch(backOnly);
+  }
+
   /* ── EVENT GALLERY BUILDER ──────────────────────────── */
   // Event pages define: const EVENT_IMAGES = [...]; const EVENT_SLUG = '...';
   if (typeof EVENT_IMAGES !== 'undefined' && typeof EVENT_SLUG !== 'undefined') {
