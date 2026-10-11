@@ -1342,6 +1342,155 @@ main { animation: fadeUp 0.6s var(--ease) both; }
 }
 
 /* ==========================================================
+   HOME: HERO BUTTONS + TWO WAYS IN
+   ========================================================== */
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2.25rem;
+  animation: heroFadeUp 0.8s var(--ease) both 1.8s;
+}
+.btn--solid { background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 600; }
+.btn--solid::before { background: var(--text); }
+.btn--solid:hover { border-color: var(--text); }
+.hero-cta .btn:not(.btn--solid) {
+  background: rgba(12, 11, 10, 0.45);
+  border-color: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.hero-cta .btn:not(.btn--solid):hover { color: var(--bg); }
+
+.home-paths { padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(3rem, 6vw, 5rem); }
+.home-paths-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.home-path {
+  position: relative;
+  display: block;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--bg-elevated);
+}
+.home-path img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85);
+  transition: transform 0.8s var(--ease), filter 0.5s var(--ease);
+}
+.home-path:hover img { transform: scale(1.05); filter: brightness(0.7); }
+.home-path::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(12,11,10,0.88) 0%, rgba(12,11,10,0.15) 55%, rgba(12,11,10,0) 100%);
+  pointer-events: none;
+}
+.home-path-info {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.5rem 1.75rem;
+}
+.home-path-label {
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.home-path-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--text);
+}
+.home-path-go { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.15rem; }
+.home-path-go span { display: inline-block; transition: transform var(--transition); }
+.home-path:hover .home-path-go span { transform: translateX(5px); }
+.home-path-play {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  background: rgba(23,22,20,0.55);
+  border: 1px solid rgba(255,255,255,0.7);
+  backdrop-filter: blur(4px);
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+.home-path-play svg { width: 26px; height: 26px; margin-left: 3px; }
+.home-path:hover .home-path-play { background: var(--accent); color: var(--bg); transform: translate(-50%, -50%) scale(1.07); }
+@media (max-width: 720px) {
+  .home-paths-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .hero-cta .btn,
+  .showreel-actions .btn { width: min(100%, 260px); justify-content: center; }
+  .hero-cta { margin-top: 1.75rem; }
+}
+
+/* ==========================================================
+   FILM PAGE: SHOWREEL FIRST + YOUTUBE SWITCH
+   ----------------------------------------------------------
+   <main class="film-main" data-youtube="end">   YouTube is a one-line link at the bottom
+   <main class="film-main" data-youtube="front"> full YouTube player + grid, shown first
+   On the home page: <main data-youtube="off"> hides "Latest Videos"; "on" shows it.
+   ========================================================== */
+.film-main { display: flex; flex-direction: column; }
+
+.showreel { border-top: 0; padding-top: clamp(1rem, 3vw, 2rem); }
+.showreel-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+.showreel-player {
+  height: min(78vh, 760px);
+  aspect-ratio: 9/16;
+  max-width: 100%;
+  background: #000;
+  overflow: hidden;
+}
+.showreel-player video { width: 100%; height: 100%; object-fit: contain; display: block; }
+.showreel-copy { max-width: 34rem; }
+.showreel-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+@media (max-width: 800px) {
+  .showreel-grid { grid-template-columns: 1fr; justify-items: center; }
+  .showreel-player { height: auto; width: min(100%, 380px); }
+  .showreel-copy { text-align: center; }
+  .showreel-actions { justify-content: center; }
+}
+
+.yt-compact { display: none; }
+.film-main[data-youtube="end"] #youtube { padding: 2rem 0 3.5rem; }
+.film-main[data-youtube="end"] #youtube .yt-full { display: none; }
+.film-main[data-youtube="end"] #youtube .yt-compact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+}
+.yt-compact-text { font-size: 1rem; color: var(--text-muted); }
+.film-main[data-youtube="front"] > .pt-nav { order: -2; }
+.film-main[data-youtube="front"] #youtube { order: -1; }
+main[data-youtube="off"] #latest-videos { display: none; }
+
+/* ==========================================================
    THANK YOU PAGE
    ========================================================== */
 .thankyou-wrap {

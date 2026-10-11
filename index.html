@@ -35,7 +35,7 @@
     </div>
   </nav>
 
-  <main>
+  <main data-youtube="off">
 
     <!-- ── HERO ── -->
     <section class="hero" aria-label="Hero">
@@ -48,7 +48,11 @@
           <span class="hero-eyebrow-line"></span>
         </div>
         <h1 class="hero-title">framesbyestelle</h1>
-        <p class="hero-subtitle">event photography &nbsp;&middot;&nbsp; portraits &nbsp;&middot;&nbsp; editorial</p>
+        <p class="hero-subtitle">event photography &nbsp;&middot;&nbsp; portraits &nbsp;&middot;&nbsp; filmmaking</p>
+        <div class="hero-cta">
+          <a href="portfolio.html" class="btn btn--solid"><span>View portfolio</span></a>
+          <a href="film.html" class="btn"><span>Watch filmmaking</span></a>
+        </div>
       </div>
       <div class="scroll-cue" aria-hidden="true">
         <span class="scroll-cue-text">scroll</span>
@@ -56,21 +60,27 @@
       </div>
     </section>
 
-    <!-- ── INTRO ── -->
-    <section class="section" aria-labelledby="intro-heading">
+    <!-- ── TWO WAYS IN ── -->
+    <section class="home-paths" aria-label="Photography and filmmaking">
       <div class="container">
-        <div class="intro-grid">
-          <div>
-            <p class="section-label">About Estelle</p>
-            <h2 class="section-title" id="intro-heading">
-              Documenting moments<br>worth remembering.
-            </h2>
-            <div class="divider" aria-hidden="true"></div>
-          </div>
-          <div class="intro-text">
-            <p>Freelance photographer based in Montreal. I started out in digital editing and Photoshop, but running a campus photography service over the past five years is where I truly fell in love with being behind the camera for events and portraits. My focus is always on capturing real, unscripted moments so people can focus on being present instead of on their phones. Feel free to reach out if you'd like to work together!</p>
-            <a href="about.html" class="btn"><span>Read more about me</span></a>
-          </div>
+        <div class="home-paths-grid">
+          <a href="portfolio.html" class="home-path">
+            <img src="images/ateliers-decouvertes/cover.jpg" alt="" loading="lazy">
+            <span class="home-path-info">
+              <span class="home-path-label">Photography</span>
+              <span class="home-path-title">Portfolio</span>
+              <span class="home-path-go">Events, portraits &amp; more <span aria-hidden="true">&#8594;</span></span>
+            </span>
+          </a>
+          <a href="film.html" class="home-path">
+            <img src="images/filmmaking-tile.jpg" alt="" loading="lazy">
+            <span class="home-path-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+            <span class="home-path-info">
+              <span class="home-path-label">Filmmaking</span>
+              <span class="home-path-title">Showreel &amp; reels</span>
+              <span class="home-path-go">Watch the work <span aria-hidden="true">&#8594;</span></span>
+            </span>
+          </a>
         </div>
       </div>
     </section>
@@ -118,8 +128,27 @@
       </div>
     </section>
 
+    <!-- ── INTRO ── -->
+    <section class="section" aria-labelledby="intro-heading">
+      <div class="container">
+        <div class="intro-grid">
+          <div>
+            <p class="section-label">About Estelle</p>
+            <h2 class="section-title" id="intro-heading">
+              Documenting moments<br>worth remembering.
+            </h2>
+            <div class="divider" aria-hidden="true"></div>
+          </div>
+          <div class="intro-text">
+            <p>Freelance photographer based in Montreal. I started out in digital editing and Photoshop, but running a campus photography service over the past five years is where I truly fell in love with being behind the camera for events and portraits. My focus is always on capturing real, unscripted moments so people can focus on being present instead of on their phones. Feel free to reach out if you'd like to work together!</p>
+            <a href="about.html" class="btn"><span>Read more about me</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ── LATEST VIDEOS ── -->
-    <section class="section" aria-labelledby="videos-heading" style="padding-top: 0;">
+    <section class="section" id="latest-videos" aria-labelledby="videos-heading" style="padding-top: 0;">
       <div class="container">
         <p class="section-label">On YouTube</p>
         <h2 class="section-title" id="videos-heading" style="margin-bottom: 2.5rem;">Latest Videos</h2>
