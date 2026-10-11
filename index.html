@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>framesbyestelle — Event Photography · Montreal</title>
-  <meta name="description" content="Freelance event photography by Estelle Huy, based in Montreal. Documenting galas, frosh, portraits, and everything in between.">
+  <title>framesbyestelle — Event photography &amp; video · Montréal</title>
+  <meta name="description" content="Event photography and video by Estelle Huy in Montréal: galas, conferences, food and hospitality, and festivals.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/home/hero-1400.jpg" imagesrcset="images/home/hero-800.jpg 800w, images/home/hero-1400.jpg 1400w, images/home/hero-1920.jpg 1920w" imagesizes="100vw" fetchpriority="high">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -37,51 +38,41 @@
 
   <main data-youtube="off">
 
-    <!-- ── HERO ── -->
-    <section class="hero" aria-label="Hero">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="hero-vignette" aria-hidden="true"></div>
-      <div class="hero-content">
-        <div class="hero-eyebrow" aria-hidden="true">
-          <span class="hero-eyebrow-line"></span>
-          <span class="hero-eyebrow-text">Montreal · Strasbourg</span>
-          <span class="hero-eyebrow-line"></span>
-        </div>
-        <h1 class="hero-title">framesbyestelle</h1>
-        <p class="hero-subtitle">event photography &nbsp;&middot;&nbsp; portraits &nbsp;&middot;&nbsp; video</p>
-        <div class="hero-cta">
-          <a href="portfolio.html" class="btn btn--solid"><span>View photography</span></a>
-          <a href="film.html" class="btn"><span>Watch video</span></a>
-        </div>
+    <!-- ── HERO: photo behind the intro, two doors ── -->
+    <section class="home-hero" aria-label="Introduction">
+      <img class="home-hero-bg"
+           src="images/home/hero-1400.jpg"
+           srcset="images/home/hero-800.jpg 800w, images/home/hero-1400.jpg 1400w, images/home/hero-1920.jpg 1920w"
+           sizes="100vw" width="1920" height="1281" alt="" fetchpriority="high" decoding="async">
+      <div class="home-hero-copy">
+        <p class="home-hero-brand">framesbyestelle</p>
+        <h1 class="home-hero-title">Event photography &amp; video in Montréal.</h1>
+        <p class="home-hero-sub">Galas, conferences, food &amp; hospitality and festivals.</p>
       </div>
-      <div class="scroll-cue" aria-hidden="true">
-        <span class="scroll-cue-text">scroll</span>
-        <span class="scroll-cue-line"></span>
-      </div>
-    </section>
-
-    <!-- ── TWO WAYS IN ── -->
-    <section class="home-paths" aria-label="Photography and video">
-      <div class="container">
-        <div class="home-paths-grid">
-          <a href="portfolio.html" class="home-path">
-            <img src="images/ateliers-decouvertes/cover.jpg" alt="" loading="lazy">
-            <span class="home-path-info">
-              <span class="home-path-label">Photography</span>
-              <span class="home-path-title">Events &amp; portraits</span>
-              <span class="home-path-go">See the work <span aria-hidden="true">&#8594;</span></span>
-            </span>
-          </a>
-          <a href="film.html" class="home-path">
-            <img src="images/filmmaking-tile.jpg" alt="" loading="lazy">
-            <span class="home-path-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-            <span class="home-path-info">
-              <span class="home-path-label">Video</span>
-              <span class="home-path-title">Showreel &amp; reels</span>
-              <span class="home-path-go">Watch the work <span aria-hidden="true">&#8594;</span></span>
-            </span>
-          </a>
-        </div>
+      <div class="home-doors">
+        <a href="portfolio.html" class="home-door">
+          <span class="home-door-thumbs" aria-hidden="true">
+            <img src="images/home/door-1.jpg" alt="" width="62" height="82">
+            <img src="images/home/door-2.jpg" alt="" width="62" height="82">
+            <img src="images/home/door-3.jpg" alt="" width="62" height="82">
+          </span>
+          <span>
+            <span class="home-door-label">Photography</span>
+            <span class="home-door-title">Events, food &amp; portraits</span>
+            <span class="home-door-go">See the work <span aria-hidden="true">&#8594;</span></span>
+          </span>
+        </a>
+        <a href="film.html" class="home-door">
+          <span class="home-door-video" aria-hidden="true">
+            <img src="images/home/door-video.jpg" alt="" width="62" height="82">
+            <span class="home-door-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </span>
+          <span>
+            <span class="home-door-label">Video</span>
+            <span class="home-door-title">Showreel &amp; reels</span>
+            <span class="home-door-go">Watch the work <span aria-hidden="true">&#8594;</span></span>
+          </span>
+        </a>
       </div>
     </section>
 

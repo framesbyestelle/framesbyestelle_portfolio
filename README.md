@@ -47,7 +47,7 @@ framesbyestelle-portfolio/
 │   └── parmentine-dinner.html
 │
 └── images/
-    ├── hero.jpg            ← Full-viewport hero background on home page
+    ├── home/               ← Home page hero photo (3 sizes) and door thumbnails
     ├── profile.jpg         ← Your photo on the About page
     ├── redbird-kiki-gala/
     │   ├── cover.jpg       ← Thumbnail shown on portfolio grid
@@ -95,9 +95,13 @@ YouTube is currently kept to a one-line link at the bottom of the Video page, an
 
 The video list itself lives in `js/youtube.js`.
 
-## Hero image
+## Home page hero
 
-Place a landscape photo at `images/hero.jpg`. Aim for at least 1920×1080px. Export it cropped tight to the photo itself — no white border or matte around it (an Instagram-style framed export will show up as grey bars down the sides of the hero). The hero is lightly darkened in `css/style.css` (`.hero-bg` brightness) so the title stays readable.
+The home page opens on a full-screen photo with the name, a one-line description and two "doors" (Photography, Video). It is plain HTML in `index.html` (the `.home-hero` section); there are no entrance animations, so it is readable as soon as it loads.
+
+- **Photo:** `images/home/hero-800.jpg`, `hero-1400.jpg` and `hero-1920.jpg` are three sizes of the same photo; the browser picks one. To change the photo, export a landscape image at those three widths (about 78% JPEG quality keeps them light) and keep the file names, or update the `srcset` and the `<link rel="preload">` in `index.html`. The photo is darkened in `css/style.css` (`.home-hero-bg` brightness and the `.home-hero::after` gradient) so the text stays readable.
+- **Headline and line under it:** `.home-hero-title` and `.home-hero-sub` in `index.html`. The "framesbyestelle" name above them is beige (`--accent`) via `.home-hero-brand`.
+- **Doors:** `.home-door` links in `index.html`. Their small thumbnails are `images/home/door-1.jpg`, `door-2.jpg`, `door-3.jpg` and `door-video.jpg` (about 160px wide, so they load instantly).
 
 ## Adding a YouTube video
 
